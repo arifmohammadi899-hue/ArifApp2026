@@ -103,19 +103,38 @@ public class MainActivity extends Activity {
             dialogLayout.addView(selectedPackage);
             dialogLayout.addView(playerIdInput);
 
-            new android.app.AlertDialog.Builder(
-                    MainActivity.this)
-
+            new android.app.AlertDialog.Builder(MainActivity.this)
                     .setTitle("ثبت سفارش")
-
                     .setView(dialogLayout)
-
-                    .setPositiveButton(
-                            "ادامه",
-                            (dialog, which) -> {
+                    .setPositiveButton("ادامه", (dialog, which) -> {
 
                         String playerId =
-                                playerIdInput
-                                .getText()
-                                .toString()
-                                .trim();
+                                playerIdInput.getText().toString().trim();
+
+                        if (playerId.isEmpty()) {
+
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "لطفاً Player ID را وارد کنید",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+
+                        } else {
+
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "سفارش ثبت شد\n"
+                                    + uc + "\n"
+                                    + "Player ID: " + playerId,
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
+                    })
+                    .setNegativeButton("لغو", null)
+                    .show();
+        });
+
+        row.addView(buyButton);
+        layout.addView(row);
+    }
+}
