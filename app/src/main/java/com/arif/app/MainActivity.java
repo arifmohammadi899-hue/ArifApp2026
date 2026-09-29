@@ -118,4 +118,4 @@ public class MainActivity extends Activity {
                                 playerIdInput
                                 .getText()
                                 .toString()
-                                ..trim();
+                                .trim();
