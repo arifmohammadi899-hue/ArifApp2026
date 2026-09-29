@@ -2,6 +2,57 @@ package com.arif.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        int[] buttons = {
+                R.id.uc60,
+                R.id.uc120,
+                R.id.uc325,
+                R.id.uc385,
+                R.id.uc720,
+                R.id.uc1800,
+                R.id.uc8100,
+                R.id.uc16200
+        };
+
+        String[] names = {
+                "60 UC",
+                "120 UC",
+                "325 UC",
+                "385 UC",
+                "720 UC",
+                "1800 UC",
+                "8100 UC",
+                "16200 UC"
+        };
+
+        for (int i = 0; i < buttons.length; i++) {
+            final String name = names[i];
+            Button button = findViewById(buttons[i]);
+
+            if (button != null) {
+                button.setOnClickListener(v ->
+                        Toast.makeText(
+                                MainActivity.this,
+                                "انتخاب شد: " + name,
+                                Toast.LENGTH_SHORT
+                        ).show()
+                );
+            }
+        }
+    }
+}package com.arif.app;
+
+import android.app.Activity;
+import android.os.Bundle;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
